@@ -74,12 +74,8 @@ nav ul a:hover{color:var(--ink)}
 .prob h2{max-width:34rem;margin-bottom:.4em}
 .prob p{color:var(--slate);max-width:34rem}
 /* ===== Showcase / Phone ===== */
-#demo{
-  background: var(--panel);
-  color: var(--paper);
-  overflow: hidden; /* Corta cualquier elemento que intente salir hacia la derecha */
-}
-.show{display:grid;grid-template-columns:1fr auto;gap:clamp(2rem,6vw,5rem);align-items:center}
+#demo{background:var(--panel);color:var(--paper);overflow:hidden}
+.show{display:grid;grid-template-columns:1fr 340px;gap:clamp(2rem,6vw,5rem);align-items:center}
 .show p{color:#C9D9E8;max-width:30rem;margin-bottom:1.4rem}
 .tabs{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
 .tabs button{font:inherit;font-weight:700;background:transparent;color:var(--paper);border:2px solid var(--muted);border-radius:999px;padding:.45em 1.1em;cursor:pointer}
@@ -89,42 +85,22 @@ nav ul a:hover{color:var(--ink)}
 
 /* Marco del teléfono. Proporción de pantalla 9:19.5 (≈ 300 x 650 px) */
 .phone{
-  width: 100%;
-  max-width: 290px; /* Reducimos ligeramente el ancho para que entre en pantallas chicas */
-  margin-inline: auto; /* Centra el celular dentro de su columna */
-  aspect-ratio: 9/19.5;
-  background: #050d18;
-  border-radius: 44px;
-  padding: 11px;
-  box-shadow: 0 0 0 2px #1d3a5c, 0 30px 60px rgba(0,0,0,.5);
-  position: relative;
-}.phone::before{content:"";position:absolute;top:18px;left:50%;translate:-50% 0;width:84px;height:22px;background:#050d18;border-radius:14px;z-index:5}
-.screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--ink)}
-.pane{position:absolute;inset:0;display:none}
-.pane.on{display:flex;flex-direction:column}
+  width:340px;
+  max-width:100%;
+  margin-inline:auto;
+  background:#050d18;
+  border-radius:44px;
+  padding:11px;
+  box-shadow:0 0 0 2px #1d3a5c,0 30px 60px rgba(0,0,0,.5);
+  position:relative;
+}
+.screen{position:relative;width:100%;border-radius:34px;overflow:hidden;background:var(--ink)}
+.pane{display:none}
+.pane.on{display:block}
 /* Marcador visible hasta que cargue tu imagen */
-.ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;background:repeating-linear-gradient(45deg,#0d2440 0 12px,#0a1b30 12px 24px)}
-.shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+.ph{display:none;min-height:520px;place-items:center;text-align:center;padding:2rem;color:var(--muted);font-size:.85rem;background:repeating-linear-gradient(45deg,#0d2440 0 12px,#0a1b30 12px 24px)}
+.shot{display:block;width:100%;height:auto}
 
-/* Demo interactiva dentro del teléfono */
-.app{padding:3.1rem 1rem 1rem;height:100%;display:flex;flex-direction:column;gap:.7rem;color:var(--paper);font-size:.82rem}
-.app-top{display:flex;justify-content:space-between;align-items:center}
-.app-top strong{font-family:var(--display);font-size:1rem}
-.off{color:var(--neon);font-size:.72rem;border:1px solid var(--neon);border-radius:5px;padding:.1em .5em}
-.mic{align-self:center;width:74px;height:74px;border-radius:50%;border:0;background:var(--signal);color:var(--ink);display:grid;place-items:center;cursor:pointer;position:relative}
-.mic svg{width:32px;height:32px}
-.mic.live::after{content:"";position:absolute;inset:-8px;border-radius:50%;border:3px solid var(--signal);animation:ring 1s ease-out infinite}
-@keyframes ring{from{opacity:1;transform:scale(.85)}to{opacity:0;transform:scale(1.25)}}
-.say{min-height:3.4em;background:var(--panel);border-radius:12px;padding:.6rem .7rem;color:#C9D9E8}
-.log{list-style:none;display:flex;flex-direction:column;gap:.4rem;overflow:auto;flex:1}
-.log li{display:grid;grid-template-columns:1fr auto;gap:.1rem .6rem;background:var(--panel);border-left:4px solid var(--neon);border-radius:4px 10px 10px 4px;padding:.45rem .6rem}
-.log li.enc{border-color:var(--signal)}
-.log li.obs{border-color:var(--muted)}
-.log li.vue{border-color:#6aa8ff}
-.log small{grid-column:1/-1;color:var(--muted)}
-.log b{font-family:var(--display)}
-.total{display:flex;justify-content:space-between;align-items:baseline;border-top:2px dashed var(--signal);padding-top:.6rem;font-family:var(--display)}
-.total span:last-child{font-size:1.4rem;color:var(--signal)}
 
 /* ===== Funcionalidades ===== */
 #funciones{background:var(--paper);color:var(--text-dark)}
@@ -175,7 +151,7 @@ footer{padding:3.5rem 0 2.5rem;border-top:6px solid var(--signal);background:var
   <div class="wrap">
     <a class="logo" href="#inicio"><img class="mark" src="data:image/jpeg;base64,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" alt="" width="36" height="36">Voz<b>Ruta</b></a>
     <ul>
-      <li><a href="#demo">Demo</a></li>
+      <li><a href="#demo">La app</a></li>
       <li><a href="#funciones">Funciones</a></li>
       <li><a href="#flujo">Cómo funciona</a></li>
       <li><a href="#stack">Tecnología</a></li>
@@ -194,7 +170,7 @@ footer{padding:3.5rem 0 2.5rem;border-top:6px solid var(--signal);background:var
         <p class="lead">Tu copiloto digital: registrá viajes y encomiendas con la voz, sin tocar el celular.</p>
         <p class="who">Para taxistas, remiseros, choferes y fleteros.</p>
         <div class="cta">
-          <a class="btn btn-main" href="#demo">Ver demo</a>
+          <a class="btn btn-main" href="#demo">Ver la app</a>
         </div>
       </div>
       <!-- LOGO: está incrustado en el archivo. Para usar tu archivo, cambiá el src por ./assets/logo.png -->
@@ -216,14 +192,13 @@ footer{padding:3.5rem 0 2.5rem;border-top:6px solid var(--signal);background:var
 <section id="demo">
   <div class="wrap show">
     <div>
-      <h2>Probala como en la ruta</h2>
-      <p>Tocá el micrófono. La demo simula comandos reales: ida, vuelta, encomienda y nota.</p>
-      <p class="hint">Usá las pestañas para alternar entre la demo y tus capturas de pantalla.</p>
+      <h2>Mirá cómo se ve VozRuta</h2>
+      <p>Viajes de ida, vuelta, encomiendas y la hoja de ruta, todo en una sola app.</p>
+      <p class="hint">Tocá los botones para cambiar de pantalla.</p>
       <div class="tabs" role="tablist" aria-label="Pantallas de la app">
-        <button role="tab" aria-selected="true" data-pane="p0">Demo interactiva</button>
-        <button role="tab" aria-selected="false" data-pane="p1">Captura 1</button>
-        <button role="tab" aria-selected="false" data-pane="p2">Captura 2</button>
-        <button role="tab" aria-selected="false" data-pane="p3">Captura 3</button>
+        <button role="tab" aria-selected="true" data-pane="p1">Registro</button>
+        <button role="tab" aria-selected="false" data-pane="p2">Menu</button>
+        <button role="tab" aria-selected="false" data-pane="p3">Historial</button>
       </div>
     </div>
 
@@ -231,13 +206,12 @@ footer{padding:3.5rem 0 2.5rem;border-top:6px solid var(--signal);background:var
       <div class="phone">
         <div class="screen">
 
-
           <!--
             ============================================================
             INSERTAR TUS CAPTURAS DE LA APP AQUÍ
             ------------------------------------------------------------
-            1. Guardá tus imágenes en la carpeta:  ./assets/screens/
-               (ej.: ./assets/screens/home.png, registro.png, reporte.png)
+            1. Guardá tus imágenes en la MISMA carpeta que index.html
+               (ej.: imagen1.png, imagen2.png, imagen4.png)
             2. Cambiá la ruta en el atributo src de cada <img> de abajo.
             3. Tamaño recomendado: 1080 x 2340 px (proporción 9:19.5),
                formato PNG o WebP. Se ajustan solas al marco del teléfono
@@ -248,21 +222,21 @@ footer{padding:3.5rem 0 2.5rem;border-top:6px solid var(--signal);background:var
           -->
 
           <!-- INSERTAR IMAGEN DE APP AQUÍ (Captura 1) -->
-          <div class="pane" id="p1">
-            <div class="ph">Captura 1<br>./assets/screens/home.png<br>1080 x 2340 px</div>
-            <img class="shot" src="\imagen1.png" width="1080" height="2340" alt="Pantalla principal con los totales del día" onerror="this.style.display='none'">
+          <div class="pane on" id="p1">
+            <div class="ph">Registro<br>./imagen1.png<br>1080 x 2400 px</div>
+            <img class="shot" src="./imagen1.png" width="1080" height="2340" alt="Pantalla principal con los totales del día" onerror="this.style.display='none'">
           </div>
 
           <!-- INSERTAR IMAGEN DE APP AQUÍ (Captura 2) -->
           <div class="pane" id="p2">
-            <div class="ph">Captura 2<br>./assets/screens/registro.png<br>1080 x 2340 px</div>
-            <img class="shot" src="\imagen2.png" width="1080" height="2340" alt="Viajes de ida, vuelta y encomiendas" onerror="this.style.display='none'">
+            <div class="ph">Menu<br>./imagen2.png<br>1080 x 2400 px</div>
+            <img class="shot" src="./imagen2.png" width="1080" height="2340" alt="Viajes de ida, vuelta y encomiendas" onerror="this.style.display='none'">
           </div>
 
           <!-- INSERTAR IMAGEN DE APP AQUÍ (Captura 3) -->
           <div class="pane" id="p3">
-            <div class="ph">Captura 3<br>./assets/screens/reporte.png<br>1080 x 2340 px</div>
-            <img class="shot" src="\imagen4.png" width="1080" height="2340" alt="Hoja de ruta en PDF" onerror="this.style.display='none'">
+            <div class="ph">Historial<br>./imagen4.png<br>1080 x 2400 px</div>
+            <img class="shot" src="./imagen4.png" width="1080" height="2340" alt="Hoja de ruta en PDF" onerror="this.style.display='none'">
           </div>
 
         </div>
@@ -334,7 +308,7 @@ footer{padding:3.5rem 0 2.5rem;border-top:6px solid var(--signal);background:var
   <div class="wrap">
     <h2>¿Querés tener el control de tu auto?</h2>
     <!-- CAMBIAR: tu correo o enlace de contacto -->
-    <a class="btn" href="mailto:anacesiasantacruz@gmail.com">Hablá con nosotros</a>
+    <a class="btn" href="mailto:anacesiasantacruz@gmail.com">Mandame un mensaje</a>
   </div>
 </section>
 </main>
@@ -370,39 +344,6 @@ document.querySelectorAll('.tabs button').forEach(function(btn){
   });
 });
 
-/* ===== Demo de voz (simulada) =====
-   Para editar los comandos de ejemplo, cambiá este arreglo.
-   tipo: 'ida', 'vue' (vuelta), 'enc' (encomienda), 'obs' (nota) */
-var ESCENAS=[
-  {dice:"María viaje a Sáenz Peña 30 mil",tipo:"ida",titulo:"María, Sáenz Peña",detalle:"Viaje de ida",monto:30000},
-  {dice:"Caja a Resistencia 5000",tipo:"enc",titulo:"Caja, Resistencia",detalle:"Encomienda",monto:5000},
-  {dice:"Pedro vuelta a Resistencia 25 lucas",tipo:"vue",titulo:"Pedro, Resistencia",detalle:"Viaje de vuelta",monto:25000},
-  {dice:"Nota: llamar a Juan mañana",tipo:"obs",titulo:"Nota",detalle:"Llamar a Juan mañana",monto:0}
-];
-var idx=0,total=0,busy=false;
-var mic=document.getElementById('mic'),say=document.getElementById('say'),log=document.getElementById('log'),tot=document.getElementById('total');
-var calma=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function money(n){return '$'+n.toLocaleString('es-AR')}
-function agregar(e){
-  var li=document.createElement('li');li.className=e.tipo==='ida'?'':e.tipo;
-  var a=document.createElement('b');a.textContent=e.titulo;
-  var m=document.createElement('b');m.textContent=e.monto?money(e.monto):'Sin cargo';
-  var s=document.createElement('small');s.textContent=e.detalle;
-  li.append(a,m,s);log.prepend(li);
-  total+=e.monto;tot.textContent=money(total);
-}
-mic.addEventListener('click',function(){
-  if(busy)return;
-  if(idx===ESCENAS.length){idx=0;total=0;log.textContent='';tot.textContent='$0'}
-  var e=ESCENAS[idx++];busy=true;mic.classList.add('live');say.textContent='';
-  var i=0;
-  function fin(){mic.classList.remove('live');say.textContent='"'+e.dice+'"';agregar(e);busy=false}
-  if(calma){fin();return}
-  var t=setInterval(function(){
-    say.textContent=e.dice.slice(0,++i);
-    if(i>=e.dice.length){clearInterval(t);setTimeout(fin,350)}
-  },32);
-});
 </script>
 </body>
 </html>
